@@ -1,0 +1,47 @@
+#cont{
+width:350px;
+height:300px;
+text-align:center;
+    margin-left: auto;
+    margin-right: auto;
+        background-color: rgba(177, 84, 44, 0.2);
+            border-radius: 20px;
+            margin-top:175px;
+                box-shadow: 10px 10px 10px lightblue;
+}
+body{
+background-image:url("https://www.internetmatters.org/wp-content/uploads/2019/07/contact-us-image.png");
+background-repeat: no-repeat;
+    background-size: cover;
+}
+
+input{
+font-size: 20px;
+    line-height: 1;
+}
+
+input::-webkit-input-placeholder {
+    font-size: 20px;
+    line-height: 1;
+    color: lightgray;
+}
+
+button{
+
+background-color:gray;
+color:white;
+border: 2px solid white;
+    width: 85px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+button:hover{
+
+background-color:lightblue;
+border: 2px solid blue;
+color:blue;
+
+}
+

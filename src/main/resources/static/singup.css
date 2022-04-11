@@ -1,0 +1,45 @@
+#cont{
+width:350px;
+height:300px;
+text-align:center;
+    margin-left: auto;
+    margin-right: auto;
+        background-color: rgba(177, 84, 44, 0.2);
+            border-radius: 20px;
+            margin-top:175px;
+                box-shadow: 10px 10px 10px lightblue;
+}
+html{
+background-image:url("https://media.istockphoto.com/photos/web-contact-us-icons-on-blue-background-contact-us-cutomer-support-picture-id1338907882?b=1&k=20&m=1338907882&s=170667a&w=0&h=p_43GQzYXk9GWkK-TiiNNPSnFgIOAF6B8k0BTKQgs7g=");
+background-repeat: no-repeat;
+    background-size: cover;
+    height:100%;
+}
+
+input{
+font-size: 20px;
+    line-height: 1;
+}
+
+input::-webkit-input-placeholder {
+    font-size: 20px;
+    line-height: 1;
+    color: lightgray;
+}
+
+button{
+background-color:lightblue;
+border: 2px solid blue;
+color:blue;
+    width: 85px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top:6px;
+}
+
+button:hover{
+background-color:gray;
+color:white;
+border: 2px solid white;
+}

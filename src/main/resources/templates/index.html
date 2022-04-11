@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>hello from home route</h1>
+<h1>Welcome <span th:text="${userData}"></span></h1>
+
+<form action="/logout" method="post">
+    <button type="submit">Log Out</button>
+</form>
+<h3 th:text="${logged}"></h3>
+</body>
+</html>

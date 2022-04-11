@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link th:href="@{style.css}"  rel="stylesheet" />
+    <title>login</title>
+</head>
+<body>
+<div id="cont">
+    <h3>Login in</h3>
+    <img th:src="fff.png" alt="image" style="width:130px;height:130px;"/>
+    <form action="/login" method="post">
+        <input type="text" id="username" style="font-family: FontAwesome;" placeholder='&#xf007 username' name="username"/>
+        <br>
+        <br>
+        <input type="text" id="password" style="font-family: FontAwesome;" placeholder='&#xf023 password' name="password"/>
+        <br>
+        <br>
+        <button type="submit">Login in</button>
+    </form>
+    <h3 th:style="${notLogged} ? 'color:red' : 'color:black'" th:text="${notLogged}?'please Sign Up , no such username or password !!':'if you dont have an account'"></h3>
+    <a th:href="signup" style="text-decoration:none">Sign Up</a>
+
+</div>
+</body>
+</html>

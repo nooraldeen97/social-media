@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link th:href="@{singup.css}"  rel="stylesheet" />
+    <title>signup</title>
+</head>
+<body>
+<div id="cont">
+    <h3>Sign Up Here ...</h3>
+    <img th:src="dd.png" alt="image" style="width: 165px; height: 145px;"/>
+    <form action="/signup" method="post">
+        <input type="text" id="username" style="font-family: FontAwesome;" placeholder='&#xf007 username' name="username"/>
+        <br>
+        <br>
+        <input type="text" id="password" style="font-family: FontAwesome;" placeholder='&#xf023 password' name="password"/>
+        <br>
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
+
+</body>
+</html>
