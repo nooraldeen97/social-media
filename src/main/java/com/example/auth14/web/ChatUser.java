@@ -2,6 +2,7 @@ package com.example.auth14.web;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class ChatUser {
@@ -15,6 +16,40 @@ public class ChatUser {
 
      @OneToMany(mappedBy = "chatUser")
         private List<Poster> posters;
+
+
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name = "following_followers",
+
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "followedby_id")
+    )
+    private Set<ChatUser> followers;
+
+
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name = "following_followers",
+            joinColumns = @JoinColumn(name = "followedby_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private Set<ChatUser> following;
+
+
+    public Set<ChatUser> getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(Set<ChatUser> followers) {
+        this.followers = followers;
+    }
+
+    public Set<ChatUser> getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(Set<ChatUser> following) {
+        this.following = following;
+    }
 
     public ChatUser() {
     }
@@ -31,6 +66,8 @@ public class ChatUser {
         this.username = username;
         this.password = password;
     }
+
+
 
     public Long getId() {
         return id;
