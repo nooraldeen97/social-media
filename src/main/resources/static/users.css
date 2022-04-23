@@ -1,0 +1,57 @@
+
+#container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 20px;
+    width: 80%;
+    margin: auto;
+}
+
+
+.userCard{
+    width: 300px;
+    border: #9FB4FF 1px solid;
+    display:grid;
+    height:400px;
+    justify-items: center;
+    align-items: center;
+}
+
+h1{
+color: #9FB4FF;
+    background-color: #F8B400;
+    display: inline;
+    text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, -2px 0px grey;
+    padding: 0px 0px 10px 20px;
+}
+
+span{
+    color: #F8B400;
+    background-color: #9FB4FF;
+    padding: 0px 20px 10px 4px;
+}
+
+#hero{
+margin-top:40px;
+margin-bottom:40px;
+width:fit-content;
+margin-left:auto;
+margin-right:auto;
+}
+
+#header{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:50px;
+    margin-bottom: 35px;
+
+}
+.sh{
+    margin-left:30px;
+}
+
+p{
+    display: contents;
+}
