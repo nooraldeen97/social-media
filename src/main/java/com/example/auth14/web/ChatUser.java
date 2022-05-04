@@ -14,7 +14,25 @@ public class ChatUser {
      String username;
      String password;
 
-     @OneToMany(mappedBy = "chatUser")
+    @Column(nullable =true, length = 128)
+    private String image;
+
+    @Transient
+    public String getPhotosImagePath() {
+        if (image == null || id == null) return null;
+
+        return "/user-photos/" + id + "/" + image;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    @OneToMany(mappedBy = "chatUser")
         private List<Poster> posters;
 
 

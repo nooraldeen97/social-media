@@ -4,16 +4,16 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.io.IOException;
+import java.util.*;
 
 @Controller
 public class Authcontroller {
@@ -29,9 +29,10 @@ public class Authcontroller {
         HttpSession session=request.getSession();
         if(session.getAttribute("username")!=null)
         {
-            model.addAttribute("userData",session.getAttribute("username"));
-
+//            model.addAttribute("userData",session.getAttribute("username"));
+            model.addAttribute("user",chatUserRepository.findByUsername(session.getAttribute("username").toString()));
             List<Poster> posters=posterRepository.findAllByChatUserUsername((String) session.getAttribute("username"));
+            model.addAttribute("imgURL",chatUserRepository.findByUsername(session.getAttribute("username").toString()).getPhotosImagePath());
             System.out.println(posters);
             return "index";
         }else{
@@ -112,14 +113,10 @@ public class Authcontroller {
     @GetMapping("/publicPost")
     String getPublicPosts(Model model,HttpServletRequest request){
 
-        HashMap<Poster,String> hashMap=new HashMap<>();
        List<Poster>posters= posterRepository.findAllByIsPublic(true);
 
-        for (Poster p:posters) {
-            hashMap.put(p,chatUserRepository.findById(p.chatUser.getId()).get().username);
-        }
         model.addAttribute("current",request.getSession().getAttribute("username"));
-        model.addAttribute("hashMapList",hashMap);
+        model.addAttribute("posters",posters);
         model.addAttribute("id",chatUserRepository.findByUsername((String) request.getSession().getAttribute("username")).id);
         return "public";
     }
@@ -140,5 +137,21 @@ public class Authcontroller {
         posterRepository.deleteById(idp);
 //        model.addAttribute("condition",);
         return new RedirectView("/publicPost");
+    }
+
+    @PutMapping("/users/save")
+    RedirectView addImage(HttpServletRequest request , @RequestParam("image") MultipartFile multipartFile) throws IOException {
+        ChatUser chatUser=chatUserRepository.findByUsername(request.getSession().getAttribute("username").toString());
+
+        String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+        chatUser.setImage(fileName);
+
+        ChatUser savedUser = chatUserRepository.save(chatUser);
+
+        String uploadDir = "user-photos/" + savedUser.getId();
+
+        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+
+        return new RedirectView("/");
     }
 }
