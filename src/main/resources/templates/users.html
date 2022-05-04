@@ -28,7 +28,7 @@
     <form  th:if="${user.getFollowers.contains(currentUserObject)}" method="post" th:action="@{'/unfollow/{id}'(id=${user.id})}" >
         <button  type="submit" class="btn btn-outline-warning">unfollow</button>
     </form>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR30SfNCE6e-sM7qSa8Z9CwrktkRgrjbHKyeSh3VyZDrsXLDVW0uHVcjmeki6bBSwQnqWo&usqp=CAU"/>
+    <img id="imgCard" th:src="${user.getPhotosImagePath()}? ${user.getPhotosImagePath()}:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR30SfNCE6e-sM7qSa8Z9CwrktkRgrjbHKyeSh3VyZDrsXLDVW0uHVcjmeki6bBSwQnqWo&usqp=CAU'"/>
     <h3 th:text="${user.username}"></h3>
     <p th:text="${user.getFollowers.size()}+' Followers'"> </p>
     <p class="sh" th:text="${user.getFollowing.size()}+' Following'"></p>

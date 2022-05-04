@@ -6,8 +6,20 @@
 </head>
 <body>
 <h1>hello from home route</h1>
-<h1>Welcome <span th:text="${userData}"></span></h1>
+<h1>Welcome <span th:text="${user.username}"></span></h1>
 
+<!--<img   src="C:\java-projects\auth14\user-photos\4\logoipsum-logo-51.jpg" />-->
+<img th:src="${imgURL}" />
+<form th:action="@{/users/save}" th:method="put" enctype="multipart/form-data">
+<!--    <input hidden type="text" id="username"name="username" th:value="${user.username}"/>-->
+<!--    <br>-->
+<!--    <br>-->
+<!--    <input hidden type="text" id="password"  name="password" th:value="${user.password}"/>-->
+<!--    <br>-->
+        <label>Photos: </label>
+        <input  type="file" name="image" accept="image/png, image/jpeg" />
+    <button type="submit">add</button>
+</form>
 <form action="/logout" method="post">
     <button type="submit">Log Out</button>
 </form>

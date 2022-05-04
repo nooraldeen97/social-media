@@ -31,6 +31,8 @@ public class FollowingController {
         model.addAttribute("users",users);
         model.addAttribute("currentUserObject",chatUserRepository.findByUsername((String) request.getSession().getAttribute("username")));
         model.addAttribute("id",chatUserRepository.findByUsername((String) request.getSession().getAttribute("username")).id);
+//        model.addAttribute("imgURL",chatUserRepository.findByUsername(request.getSession().getAttribute("username").toString()).getPhotosImagePath());
+
         return "users";
     }
 
